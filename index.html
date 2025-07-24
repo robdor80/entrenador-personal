@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrenador Personal</title>
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+  <header class="main-header">
+    <h1>🏋️ Entrenador Personal</h1>
+    <nav class="menu-desktop">
+      <button id="btn-calendario">Calendario</button>
+      <button id="btn-rutinas">Rutinas</button>
+      <button id="btn-historial">Historial</button>
+    </nav>
+    <div class="login-area">
+  <button id="login-btn">Iniciar sesión con Google</button>
+  <button id="logout-btn" class="hidden">Cerrar sesión</button>
+
+  
+</div>
+
+  </header>
+
+  <!-- Menú hamburguesa móvil fuera del header -->
+<div class="menu-mobile-wrapper">
+  <button id="hamburger">&#9776;</button>
+  <div id="mobile-menu" class="hidden">
+    <button id="btn-calendario-mobile">Calendario</button>
+    <button id="btn-rutinas-mobile">Rutinas</button>
+    <button id="btn-historial-mobile">Historial</button>
+  </div>
+</div>
+
+
+  <main id="contenido">
+    <!-- Aquí se cargará el calendario -->
+  </main>
+
+  <script type="module" src="firebase/firebaseConfig.js"></script>
+  <script type="module" src="firebase/firebaseInit.js"></script>
+  <script type="module" src="js/index.js"></script>
+</body>
+</html>
