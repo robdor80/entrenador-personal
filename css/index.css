@@ -215,6 +215,15 @@ main,
   overflow-x: hidden;
 }
 
+.menu-desktop {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+
 
 /* ------------------- MEDIA QUERIES ------------------- */
 
