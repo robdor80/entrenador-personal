@@ -181,6 +181,31 @@ main {
   opacity: 0;
 }
 
+/* Solución definitiva para evitar scroll horizontal */
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Fuerza a que todo el contenido se mantenga dentro del viewport */
+main,
+.calendario,
+.grid-calendario {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+
 /* ------------------- MEDIA QUERIES ------------------- */
 
 /* PC y tablet horizontal */
