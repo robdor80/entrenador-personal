@@ -113,10 +113,12 @@ main {
 
 .grid-calendario {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.4rem;
+  grid-template-columns: repeat(7, minmax(45px, 1fr));
+  gap: 0.5rem;
   margin-top: 1rem;
+  padding: 0 0.5rem;
 }
+
 
 .dia {
   background-color: #fff;
