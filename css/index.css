@@ -24,9 +24,13 @@ body {
 }
 
 .menu-desktop {
-  display: none;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
   margin-top: 0.5rem;
+  flex-wrap: wrap;
 }
+
 
 .menu-desktop button {
   margin: 0.3rem;
@@ -238,13 +242,7 @@ main,
     display: none;
   }
 
-  .menu-desktop {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 0.5rem;
-  flex-wrap: wrap;
-}
+  
 
 
   .menu-desktop button {
