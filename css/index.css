@@ -198,3 +198,16 @@ main {
     font-size: 1rem;
   }
 }
+
+/* Móvil */
+
+@media screen and (max-width: 767px) {
+  #user-info {
+    font-size: 0.6rem !important;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
