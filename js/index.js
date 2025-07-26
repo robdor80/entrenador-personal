@@ -5,12 +5,7 @@ const loginBtn = document.getElementById("login-btn");
 const logoutBtn = document.getElementById("logout-btn");
 const contenido = document.getElementById("contenido");
 
-// Menú móvil
-const hamburger = document.getElementById("hamburger");
-const mobileMenu = document.getElementById("mobile-menu");
-hamburger.addEventListener("click", () => {
-  mobileMenu.classList.toggle("hidden");
-});
+
 
 // Login
 loginBtn.addEventListener("click", () => {
