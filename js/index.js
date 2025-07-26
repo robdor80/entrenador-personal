@@ -30,21 +30,25 @@ const userInfo = document.getElementById("user-info");
 
 monitorAuthState((user) => {
   if (user) {
-    loginBtn.classList.add("hidden");
-    logoutBtn.classList.remove("hidden");
-    userInfo.classList.remove("hidden");
-
-    const nombre = user.displayName || "Usuario";
-    userInfo.textContent = `Hola, ${nombre}`;
+    if (loginBtn) loginBtn.classList.add("hidden");
+    if (logoutBtn) logoutBtn.classList.remove("hidden");
+    if (userInfo) {
+      userInfo.classList.remove("hidden");
+      const nombre = user.displayName || "Usuario";
+      userInfo.textContent = `Hola, ${nombre}`;
+    }
     mostrarCalendario();
   } else {
-    loginBtn.classList.remove("hidden");
-    logoutBtn.classList.add("hidden");
-    userInfo.classList.add("hidden");
-    userInfo.textContent = "";
+    if (loginBtn) loginBtn.classList.remove("hidden");
+    if (logoutBtn) logoutBtn.classList.add("hidden");
+    if (userInfo) {
+      userInfo.classList.add("hidden");
+      userInfo.textContent = "";
+    }
     contenido.innerHTML = `<p class="aviso">Inicia sesión para acceder al calendario.</p>`;
   }
 });
+
 
 
 // Calendario base (solo título de momento)
