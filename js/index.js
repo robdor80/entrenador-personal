@@ -62,7 +62,7 @@ function mostrarCalendario() {
   const diasAntes = primerDiaSemana === 0 ? 6 : primerDiaSemana - 1;
 
   // Fecha base real desde la que empieza tu ciclo MMTTNNSLLLLL
-  const fechaBase = new Date("2025-07-05");
+  const fechaBase = new Date("2025-07-03");
 
   const cicloTurnos = ["M", "M", "T", "T", "N", "N", "S", "L", "L", "L", "L", "L"];
   const colores = {
