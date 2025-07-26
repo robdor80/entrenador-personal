@@ -156,6 +156,11 @@ main {
   font-weight: bold;
 }
 
+.hidden {
+  display: none !important;
+}
+
+
 
 
 /* ------------------- MEDIA QUERIES ------------------- */
