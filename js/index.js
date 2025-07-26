@@ -4,10 +4,9 @@ import { loginWithGoogle, logout, monitorAuthState } from "../firebase/firebaseI
 const loginBtn = document.getElementById("login-btn");
 const logoutBtn = document.getElementById("logout-btn");
 const contenido = document.getElementById("contenido");
+const userInfo = document.getElementById("user-info");
+const menuDesktop = document.querySelector(".menu-desktop");
 
-
-
-// Login
 loginBtn.addEventListener("click", () => {
   loginWithGoogle().catch((error) => {
     console.error("Error al iniciar sesión:", error);
@@ -19,10 +18,6 @@ logoutBtn.addEventListener("click", () => {
     console.error("Error al cerrar sesión:", error);
   });
 });
-
-// Detectar login activo
-const userInfo = document.getElementById("user-info");
-const menuDesktop = document.querySelector(".menu-desktop");
 
 monitorAuthState((user) => {
   if (user) {
@@ -46,6 +41,7 @@ monitorAuthState((user) => {
     contenido.innerHTML = `<p class="aviso">Inicia sesión para acceder al calendario.</p>`;
   }
 });
+
 
 
 
