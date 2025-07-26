@@ -164,16 +164,18 @@ main {
 }
 
 #user-info {
-  display: inline-block;
-  margin-top: 0.5rem;
+  display: block;
+  margin-top: 0.3rem;
   color: #fff;
   font-weight: bold;
-  font-size: 0.45rem;
-  max-width: 100%;
+  font-size: 0.8rem;
+  text-align: center;
+  width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 
 .hidden {
   display: none !important;
