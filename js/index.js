@@ -61,8 +61,9 @@ function mostrarCalendario() {
   const primerDiaSemana = new Date(year, month, 1).getDay(); // 0 = domingo
   const diasAntes = primerDiaSemana === 0 ? 6 : primerDiaSemana - 1;
 
-  // Fecha base desde la que empieza tu ciclo MMTTNNSLLLLL
-  const fechaBase = new Date("2024-01-01"); // cámbiala si lo deseas
+  // Fecha base real desde la que empieza tu ciclo MMTTNNSLLLLL
+  const fechaBase = new Date("2025-07-04");
+
   const cicloTurnos = ["M", "M", "T", "T", "N", "N", "S", "L", "L", "L", "L", "L"];
   const colores = {
     M: "red",
@@ -84,7 +85,8 @@ function mostrarCalendario() {
   for (let dia = 1; dia <= diasMes; dia++) {
     const fecha = new Date(year, month, dia);
     const diffDias = Math.floor((fecha - fechaBase) / (1000 * 60 * 60 * 24));
-    const tipoTurno = cicloTurnos[diffDias % cicloTurnos.length];
+    const tipoTurno = cicloTurnos[((diffDias % cicloTurnos.length) + cicloTurnos.length) % cicloTurnos.length];
+
     const color = colores[tipoTurno] || "#ccc";
 
     html += `
