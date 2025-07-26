@@ -22,6 +22,7 @@ logoutBtn.addEventListener("click", () => {
 
 // Detectar login activo
 const userInfo = document.getElementById("user-info");
+const menuDesktop = document.querySelector(".menu-desktop");
 
 monitorAuthState((user) => {
   if (user) {
@@ -32,6 +33,7 @@ monitorAuthState((user) => {
       const nombre = user.displayName || "Usuario";
       userInfo.textContent = `Hola, ${nombre}`;
     }
+    if (menuDesktop) menuDesktop.classList.remove("hidden");
     mostrarCalendario();
   } else {
     if (loginBtn) loginBtn.classList.remove("hidden");
@@ -40,9 +42,11 @@ monitorAuthState((user) => {
       userInfo.classList.add("hidden");
       userInfo.textContent = "";
     }
+    if (menuDesktop) menuDesktop.classList.add("hidden");
     contenido.innerHTML = `<p class="aviso">Inicia sesión para acceder al calendario.</p>`;
   }
 });
+
 
 
 
