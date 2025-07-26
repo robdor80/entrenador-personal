@@ -26,17 +26,26 @@ logoutBtn.addEventListener("click", () => {
 });
 
 // Detectar login activo
+const userInfo = document.getElementById("user-info");
+
 monitorAuthState((user) => {
   if (user) {
     loginBtn.classList.add("hidden");
     logoutBtn.classList.remove("hidden");
+    userInfo.classList.remove("hidden");
+
+    const nombre = user.displayName || "Usuario";
+    userInfo.textContent = `Hola, ${nombre}`;
     mostrarCalendario();
   } else {
     loginBtn.classList.remove("hidden");
     logoutBtn.classList.add("hidden");
+    userInfo.classList.add("hidden");
+    userInfo.textContent = "";
     contenido.innerHTML = `<p class="aviso">Inicia sesión para acceder al calendario.</p>`;
   }
 });
+
 
 // Calendario base (solo título de momento)
 function mostrarCalendario() {

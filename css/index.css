@@ -149,6 +149,14 @@ main {
   box-shadow: none;
 }
 
+#user-info {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+
 
 /* ------------------- MEDIA QUERIES ------------------- */
 
