@@ -114,13 +114,7 @@ main {
 
 }
 
-.menu-mobile-wrapper #hamburger {
-  font-size: 1.5rem;
-  background-color: transparent;
-  border: none;
-  color: black;
-  cursor: pointer;
-}
+
 
 #mobile-menu {
   margin-top: 1rem; /* más espacio antes del calendario */
@@ -203,6 +197,16 @@ main {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.dia-header {
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5rem;
+  background-color: #ecf0f1;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
 
 
 .hidden {

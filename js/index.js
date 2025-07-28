@@ -64,8 +64,17 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     let html = `<section class="calendario">
-      <h2>${fechaActual.toLocaleDateString("es-ES", { month: "long", year: "numeric" }).toUpperCase()}</h2>
-      <div class="grid-calendario">`;
+  <h2>${fechaActual.toLocaleDateString("es-ES", { month: "long", year: "numeric" }).toUpperCase()}</h2>
+  <div class="grid-calendario">
+    <div class="dia-header">L</div>
+    <div class="dia-header">M</div>
+    <div class="dia-header">X</div>
+    <div class="dia-header">J</div>
+    <div class="dia-header">V</div>
+    <div class="dia-header">S</div>
+    <div class="dia-header">D</div>
+`;
+
 
     for (let i = 0; i < diasAntes; i++) {
       html += `<div class="dia dia-vacio"></div>`;
