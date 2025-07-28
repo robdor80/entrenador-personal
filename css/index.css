@@ -260,14 +260,20 @@ main,
     white-space: nowrap;
   }
 
+  .calendario {
+    padding: 0; /* quita el padding lateral */
+  }
+
   .dia {
     min-width: 0;
     max-width: 100%;
+    font-size: 0.85rem;
+    padding: 0.6rem 0.3rem;
   }
 
   .grid-calendario {
-    padding: 0 0.25rem;
-    gap: 0.4rem;
+    padding: 0;
+    gap: 0.1rem;
   }
 
   .grid-calendario {
