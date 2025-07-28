@@ -84,8 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
     fecha.getFullYear() === hoy.getFullYear();
 
   const estiloHoy = esHoy
-    ? `background: linear-gradient(to bottom, #ffffff, #fff8e1);`
-    : "";
+  ? `background: linear-gradient(to bottom, #ffffff, #e3f2fd);`
+  : "";
+
 
   html += `
     <div class="dia" style="border-left: 6px solid ${color}; ${estiloHoy}" title="Turno: ${tipoTurno}">
