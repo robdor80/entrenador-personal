@@ -83,14 +83,15 @@ document.addEventListener("DOMContentLoaded", () => {
     fecha.getMonth() === hoy.getMonth() &&
     fecha.getFullYear() === hoy.getFullYear();
 
-  const bordeColor = esHoy ? "#e67e22" : color;
+  const bordeHoy = esHoy ? 'border: 1px solid orange;' : '';
 
   html += `
-    <div class="dia" style="border-left: 6px solid ${bordeColor}" title="Turno: ${tipoTurno}${esHoy ? ' (HOY)' : ''}">
+    <div class="dia" style="border-left: 6px solid ${color}; ${bordeHoy}" title="Turno: ${tipoTurno}">
       <strong>${dia}</strong><br />
-      <span class="turno">${tipoTurno}${esHoy ? ' 🟠' : ''}</span>
+      <span class="turno">${tipoTurno}</span>
     </div>`;
 }
+
 
 
     html += `</div></section>`;
