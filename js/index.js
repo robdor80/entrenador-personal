@@ -72,7 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
     <span class="mes-texto">${fechaActual.toLocaleDateString("es-ES", { month: "long", year: "numeric" }).toUpperCase()}</span>
     <button id="mes-siguiente" class="flecha-mes">▶</button>
   </div>
-  <button id="mes-hoy" class="btn-hoy">HOY</button>
+  <button id="mes-hoy" class="btn-hoy">Hoy <i class="fas fa-calendar-day"></i></button>
+
+
 </h2>
 
 
@@ -134,5 +136,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       mostrarCalendario();
     });
+
+    document.getElementById("mes-hoy").addEventListener("click", () => {
+  const ahora = new Date();
+  mesActual = ahora.getMonth();
+  anioActual = ahora.getFullYear();
+  mostrarCalendario();
+});
+
   }
 });
