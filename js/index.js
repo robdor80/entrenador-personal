@@ -83,15 +83,17 @@ document.addEventListener("DOMContentLoaded", () => {
     fecha.getMonth() === hoy.getMonth() &&
     fecha.getFullYear() === hoy.getFullYear();
 
-  const bordeHoy = esHoy ? 'box-shadow: 0 0 0 2px orange;' : '';
-
+  const estiloHoy = esHoy
+    ? `background: linear-gradient(to bottom, #ffffff, #fff8e1);`
+    : "";
 
   html += `
-  <div class="dia" style="border-left: 6px solid ${color}; ${bordeHoy}" title="Turno: ${tipoTurno}">
-    <strong>${dia}</strong><br />
-    <span class="turno">${tipoTurno}</span>
-  </div>`;
+    <div class="dia" style="border-left: 6px solid ${color}; ${estiloHoy}" title="Turno: ${tipoTurno}">
+      <strong>${dia}</strong><br />
+      <span class="turno">${tipoTurno}</span>
+    </div>`;
 }
+
 
 
 
