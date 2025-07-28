@@ -67,10 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let html = `<section class="calendario">
       <h2>
-        <button id="mes-anterior" class="flecha-mes">◀</button>
-        ${fechaActual.toLocaleDateString("es-ES", { month: "long", year: "numeric" }).toUpperCase()}
-        <button id="mes-siguiente" class="flecha-mes">▶</button>
-      </h2>
+    ${fechaActual.toLocaleDateString("es-ES", { month: "long", year: "numeric" }).toUpperCase()}
+    <div class="flechas-mes-wrapper">
+      <button id="mes-anterior" class="flecha-mes">◀</button>
+      <button id="mes-siguiente" class="flecha-mes">▶</button>
+      <button id="mes-hoy" class="flecha-mes">HOY</button>
+    </div>
+  </h2>
 
       <div class="grid-calendario">
         <div class="dia-header">L</div>
