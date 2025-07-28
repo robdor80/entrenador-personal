@@ -1,0 +1,25 @@
+
+@media screen and (max-width: 767px) {
+  .grid-calendario {
+    gap: 0.3rem;
+    padding: 0 0.2rem;
+  }
+
+  .dia {
+    font-size: 0.8rem;
+    min-height: 55px;
+  }
+
+  .entreno-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.9rem;
+  }
+
+  .modal-content {
+    width: 95%;
+  }
+
+  .btn-hoy {
+    font-size: 0.85rem;
+  }
+}
