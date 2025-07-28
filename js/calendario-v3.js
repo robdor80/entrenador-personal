@@ -1,4 +1,4 @@
-console.log("📦 calendario-v2.js cargado");
+console.log("📦 calendario-v3.js cargado");
 
 import { auth, db } from "../firebase/firebaseInit.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
@@ -8,17 +8,17 @@ import {
   getDoc,
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// Logs para confirmar entorno
+// Verificación de entorno
 console.log("✅ Firebase DB disponible:", typeof db);
 console.log("✅ Firebase Auth disponible:", typeof auth);
 
-// Listar todos los scripts
+// Mostrar scripts cargados
 console.log("📋 Scripts cargados:");
 document.querySelectorAll("script").forEach((s, i) =>
   console.log(`${i + 1}.`, s.src || "[inline]")
 );
 
-// Detectar errores
+// Detectar errores globales
 window.addEventListener("error", (e) => {
   console.error("🔥 ERROR GLOBAL DETECTADO:", e.message, "\nArchivo:", e.filename, "\nLínea:", e.lineno);
 });
@@ -32,10 +32,15 @@ onAuthStateChanged(auth, async (user) => {
 
   console.log("👤 Usuario logueado:", user.email);
 
-  const ref = doc(db, "entrenos", user.uid);
+  // Intento de lectura desde Firestore
   try {
+    const ref = doc(db, "entrenos", user.uid);  // <-- correctamente como `doc()`, no `collection()`
     const snap = await getDoc(ref);
-    console.log("📄 Documento en Firestore:", snap.exists() ? snap.data() : "No existe aún");
+    if (snap.exists()) {
+      console.log("📄 Documento Firestore encontrado:", snap.data());
+    } else {
+      console.log("🆕 Documento aún no existe en Firestore.");
+    }
   } catch (e) {
     console.error("🔥 ERROR Firebase al obtener doc:", e.message);
   }
