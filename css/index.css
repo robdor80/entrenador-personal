@@ -60,6 +60,22 @@ body {
   background-color: #e74c3c;
 }
 
+.btn-enlace {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 0.3rem;
+  text-align: center;
+}
+
+.btn-enlace:hover {
+  background-color: #2980b9;
+}
+
+
 main {
   padding: 1rem;
   text-align: center;
