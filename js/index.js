@@ -72,17 +72,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     for (let dia = 1; dia <= diasMes; dia++) {
-      const fecha = new Date(year, month, dia);
-      const diffDias = Math.floor((fecha - fechaBase) / (1000 * 60 * 60 * 24));
-      const tipoTurno = cicloTurnos[((diffDias % cicloTurnos.length) + cicloTurnos.length) % cicloTurnos.length];
-      const color = colores[tipoTurno] || "#ccc";
+  const fecha = new Date(year, month, dia);
+  const diffDias = Math.floor((fecha - fechaBase) / (1000 * 60 * 60 * 24));
+  const tipoTurno = cicloTurnos[((diffDias % cicloTurnos.length) + cicloTurnos.length) % cicloTurnos.length];
+  const color = colores[tipoTurno] || "#ccc";
 
-      html += `
-        <div class="dia" style="border-left: 6px solid ${color}" title="Turno: ${tipoTurno}">
-          <strong>${dia}</strong><br />
-          <span class="turno">${tipoTurno}</span>
-        </div>`;
-    }
+  const hoy = new Date();
+  const esHoy =
+    fecha.getDate() === hoy.getDate() &&
+    fecha.getMonth() === hoy.getMonth() &&
+    fecha.getFullYear() === hoy.getFullYear();
+
+  const bordeColor = esHoy ? "#e67e22" : color;
+
+  html += `
+    <div class="dia" style="border-left: 6px solid ${bordeColor}" title="Turno: ${tipoTurno}${esHoy ? ' (HOY)' : ''}">
+      <strong>${dia}</strong><br />
+      <span class="turno">${tipoTurno}${esHoy ? ' 🟠' : ''}</span>
+    </div>`;
+}
+
 
     html += `</div></section>`;
     contenido.innerHTML = html;
