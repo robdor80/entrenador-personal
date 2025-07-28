@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fecha.getFullYear() === hoy.getFullYear();
 
   const estiloHoy = esHoy
-  ? `background: linear-gradient(to bottom, #ffffff, #e3f2fd);`
+  ? `background: linear-gradient(to bottom, #ffffff, #1f4b6aff);`
   : "";
 
 
