@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seleccionar Entreno</title>
+  <link rel="stylesheet" href="css/calendario.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <header class="main-header">
+    <h1>Selecciona tu entreno</h1>
+  </header>
+
+  <main id="contenido">
+    <!-- Aquí se cargará el calendario dinámico -->
+  </main>
+
+  <!-- Modal para elegir tipo de entreno -->
+  <div id="modal-entreno" class="modal hidden">
+    <div class="modal-content">
+      <h2>Selecciona el tipo de entreno</h2>
+      <div class="opciones-entreno">
+        <button class="entreno-btn" data-tipo="A">A</button>
+        <button class="entreno-btn" data-tipo="B">B</button>
+        <button class="entreno-btn" data-tipo="C">C</button>
+        <button class="entreno-btn" data-tipo="D">D</button>
+        <button class="entreno-btn" data-tipo="E">E</button>
+        <button class="entreno-btn" data-tipo="F">F</button>
+        <button class="entreno-btn" data-tipo="X">Especial</button>
+      </div>
+      <div class="modal-acciones">
+        <button id="guardar-entreno">OK</button>
+        <button id="cancelar-entreno">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase y lógica del calendario -->
+  <script type="module" src="firebase/firebaseConfig.js"></script>
+  <script type="module" src="firebase/firebaseInit.js"></script>
+  <script type="module" src="js/calendario.js"></script>
+</body>
+</html>
