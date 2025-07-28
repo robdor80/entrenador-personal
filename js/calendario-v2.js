@@ -1,3 +1,8 @@
+window.addEventListener("error", (e) => {
+  console.error("🔥 ERROR GLOBAL DETECTADO:", e.message, "\nArchivo:", e.filename, "\nLínea:", e.lineno);
+});
+
+
 import { auth, db } from "../firebase/firebaseInit.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {
