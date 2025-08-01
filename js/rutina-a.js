@@ -1,8 +1,17 @@
 // rutina-a.js
 
-// CRONÓMETRO GENERAL
+import { db } from "../firebase/firebaseInit.js";
+import { doc, setDoc, getDoc, updateDoc, arrayUnion, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { auth } from "../firebase/firebaseConfig.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
 let tiempoGeneral = 0;
 let intervaloGeneral = null;
+let usuario = null;
+
+onAuthStateChanged(auth, (user) => {
+  if (user) usuario = user;
+});
 
 function iniciarCronoGeneral() {
   if (intervaloGeneral) return;
@@ -23,7 +32,6 @@ function reiniciarCronoGeneral() {
   document.getElementById("tiempo-general").textContent = "00:00:00";
 }
 
-// CRONÓMETRO HIIT
 let tiempoHIIT = 0;
 let intervaloHIIT = null;
 
@@ -46,7 +54,6 @@ function reiniciarHIIT() {
   document.getElementById("hiit-timer").textContent = "00:00";
 }
 
-// FORMATOS DE TIEMPO
 function formatearTiempo(segundos) {
   const h = Math.floor(segundos / 3600).toString().padStart(2, '0');
   const m = Math.floor((segundos % 3600) / 60).toString().padStart(2, '0');
@@ -60,17 +67,43 @@ function formatearMinSeg(segundos) {
   return `${m}:${s}`;
 }
 
-// CHECK DE TARJETAS
 window.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".tarjeta input[type='checkbox']").forEach(checkbox => {
     checkbox.addEventListener("change", () => {
       const tarjeta = checkbox.closest(".tarjeta");
       tarjeta.classList.toggle("completada", checkbox.checked);
 
-      // Si es el checkbox de la tarjeta HIIT y se marca, parar el cronómetro HIIT
       if (tarjeta.querySelector("#hiit-timer") && checkbox.checked) {
         pausarHIIT();
+      }
+
+      const totalChecks = document.querySelectorAll(".tarjeta input[type='checkbox']").length;
+      const checksMarcados = document.querySelectorAll(".tarjeta input[type='checkbox']:checked").length;
+      if (totalChecks > 0 && totalChecks === checksMarcados) {
+        pausarCronoGeneral();
+        guardarRutinaEnHistorial();
       }
     });
   });
 });
+
+async function guardarRutinaEnHistorial() {
+  if (!usuario) return;
+
+  const datos = {
+    rutina: "Rutina A",
+    fecha: new Date().toISOString(),
+    duracion: formatearTiempo(tiempoGeneral),
+    bloques: {},
+  };
+
+  document.querySelectorAll(".tarjeta").forEach((tarjeta) => {
+    const titulo = tarjeta.querySelector("h2")?.textContent || "Bloque";
+    const texto = tarjeta.innerText.trim();
+    datos.bloques[titulo] = texto;
+  });
+
+  const ref = doc(db, "historial", usuario.uid);
+  await setDoc(ref, { sesiones: arrayUnion(datos) }, { merge: true });
+  console.log("✅ Rutina guardada en historial");
+}
