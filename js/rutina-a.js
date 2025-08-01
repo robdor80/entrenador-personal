@@ -1,7 +1,7 @@
 // rutina-a.js
 
 import { db } from "../firebase/firebaseInit.js";
-import { doc, setDoc, getDoc, updateDoc, arrayUnion, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { doc, setDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 import { auth } from "../firebase/firebaseConfig.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
@@ -11,48 +11,52 @@ let tiempoHIIT = 0;
 let intervaloHIIT = null;
 let usuario = null;
 
+// Detectar usuario
 onAuthStateChanged(auth, (user) => {
   if (user) usuario = user;
 });
 
-function iniciarCronoGeneral() {
+// CRONÓMETRO GENERAL
+window.iniciarCronoGeneral = function () {
   if (intervaloGeneral) return;
   intervaloGeneral = setInterval(() => {
     tiempoGeneral++;
     document.getElementById("tiempo-general").textContent = formatearTiempo(tiempoGeneral);
   }, 1000);
-}
+};
 
-function pausarCronoGeneral() {
+window.pausarCronoGeneral = function () {
   clearInterval(intervaloGeneral);
   intervaloGeneral = null;
-}
+};
 
-function reiniciarCronoGeneral() {
-  pausarCronoGeneral();
+window.reiniciarCronoGeneral = function () {
+  window.pausarCronoGeneral();
   tiempoGeneral = 0;
   document.getElementById("tiempo-general").textContent = "00:00:00";
-}
+};
 
-function iniciarHIIT() {
+// CRONÓMETRO HIIT
+window.iniciarHIIT = function () {
   if (intervaloHIIT) return;
   intervaloHIIT = setInterval(() => {
     tiempoHIIT++;
     document.getElementById("hiit-timer").textContent = formatearMinSeg(tiempoHIIT);
   }, 1000);
-}
+};
 
-function pausarHIIT() {
+window.pausarHIIT = function () {
   clearInterval(intervaloHIIT);
   intervaloHIIT = null;
-}
+};
 
-function reiniciarHIIT() {
-  pausarHIIT();
+window.reiniciarHIIT = function () {
+  window.pausarHIIT();
   tiempoHIIT = 0;
   document.getElementById("hiit-timer").textContent = "00:00";
-}
+};
 
+// FORMATO TIEMPOS
 function formatearTiempo(segundos) {
   const h = Math.floor(segundos / 3600).toString().padStart(2, '0');
   const m = Math.floor((segundos % 3600) / 60).toString().padStart(2, '0');
@@ -66,37 +70,29 @@ function formatearMinSeg(segundos) {
   return `${m}:${s}`;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Asignar eventos a botones del cronómetro general
-  document.querySelector("button[onclick='iniciarCronoGeneral()']")?.addEventListener("click", iniciarCronoGeneral);
-  document.querySelector("button[onclick='pausarCronoGeneral()']")?.addEventListener("click", pausarCronoGeneral);
-  document.querySelector("button[onclick='reiniciarCronoGeneral()']")?.addEventListener("click", reiniciarCronoGeneral);
-
-  // Asignar eventos a botones del HIIT
-  document.querySelector("button[onclick='iniciarHIIT()']")?.addEventListener("click", iniciarHIIT);
-  document.querySelector("button[onclick='pausarHIIT()']")?.addEventListener("click", pausarHIIT);
-  document.querySelector("button[onclick='reiniciarHIIT()']")?.addEventListener("click", reiniciarHIIT);
-
-  // Eventos para los checks
+// CHECKBOXES
+window.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".tarjeta input[type='checkbox']").forEach(checkbox => {
     checkbox.addEventListener("change", () => {
       const tarjeta = checkbox.closest(".tarjeta");
       tarjeta.classList.toggle("completada", checkbox.checked);
 
       if (tarjeta.querySelector("#hiit-timer") && checkbox.checked) {
-        pausarHIIT();
+        window.pausarHIIT();
       }
 
       const totalChecks = document.querySelectorAll(".tarjeta input[type='checkbox']").length;
       const checksMarcados = document.querySelectorAll(".tarjeta input[type='checkbox']:checked").length;
+
       if (totalChecks > 0 && totalChecks === checksMarcados) {
-        pausarCronoGeneral();
+        window.pausarCronoGeneral();
         guardarRutinaEnHistorial();
       }
     });
   });
 });
 
+// GUARDAR EN FIREBASE
 async function guardarRutinaEnHistorial() {
   if (!usuario) return;
 
