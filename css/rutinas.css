@@ -47,6 +47,11 @@ body {
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+}
+
+.tarjeta.completada {
+  border: 2px solid green;
 }
 
 .tarjeta h2 {
@@ -84,9 +89,33 @@ button {
   font-size: 1rem;
 }
 
+.contenedor-rutinas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+}
 
+.tarjeta-rutina {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  min-width: 220px;
+  flex: 1 1 220px;
+  max-width: 280px;
+}
 
-
+.tarjeta-rutina:hover {
+  background-color: #e8f4ff;
+  transform: scale(1.02);
+}
 
 @media screen and (max-width: 767px) {
   .grid-calendario {
@@ -110,5 +139,15 @@ button {
 
   .btn-hoy {
     font-size: 0.85rem;
+  }
+
+  .contenedor-rutinas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tarjeta-rutina {
+    width: 90%;
+    max-width: none;
   }
 }
