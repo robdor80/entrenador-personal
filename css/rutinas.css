@@ -48,11 +48,19 @@ body {
   margin-bottom: 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border: 2px solid transparent;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tarjeta.completada {
-  border: 2px solid green;
+  border: 2px solid green !important;
+  box-shadow: 0 0 10px rgba(0, 128, 0, 0.3);
 }
+
+.tarjeta.completada input[type="checkbox"] {
+  accent-color: green;
+}
+
+
 
 .tarjeta h2 {
   margin-top: 0;
