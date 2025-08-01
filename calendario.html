@@ -3,45 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seleccionar Entreno</title>
-  <link rel="stylesheet" href="css/calendario.css" />
+  <title>Entrenador Personal</title>
+  <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <header class="main-header">
-    <h1>Selecciona tu entreno</h1>
+    <h1>Mi Entrenador Personal</h1>
+
+    <div class="menu-desktop">
+      <a href="calendario.html" class="btn-enlace">Calendario</a>
+      <button id="btn-rutinas">Rutinas</button>
+      <button id="btn-historial">Historial</button>
+    </div>
   </header>
 
   <main id="contenido">
-    <!-- Aquí se cargará el calendario dinámico -->
+    <!-- Aquí se cargará el calendario -->
   </main>
 
-  <!-- Modal para elegir tipo de entreno -->
-  <div id="modal-entreno" class="modal hidden">
-    <div class="modal-content">
-      <h2>Selecciona el tipo de entreno</h2>
-      <div class="opciones-entreno">
-        <button class="entreno-btn" data-tipo="A">A</button>
-        <button class="entreno-btn" data-tipo="B">B</button>
-        <button class="entreno-btn" data-tipo="C">C</button>
-        <button class="entreno-btn" data-tipo="D">D</button>
-        <button class="entreno-btn" data-tipo="E">E</button>
-        <button class="entreno-btn" data-tipo="F">F</button>
-        <button class="entreno-btn" data-tipo="X">Especial</button>
-      </div>
-      <div class="modal-acciones">
-        <button id="guardar-entreno">OK</button>
-        <button id="cancelar-entreno">Cancelar</button>
-      </div>
-    </div>
-  </div>
+  <script type="module" src="js/calendario.js"></script>
 
-  <!-- Firebase y lógica del calendario -->
-  <script type="module" src="firebase/firebaseConfig.js"></script>
-  <script type="module" src="firebase/firebaseInit.js"></script>
-  <script type="module" src="js/calendario-v3.js?v=3"></script>
-
-
-
-</body>
 </html>
+

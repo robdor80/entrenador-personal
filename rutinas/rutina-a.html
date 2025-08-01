@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rutina A</title>
+  <link rel="stylesheet" href="../css/rutinas.css" />
+</head>
+
+<body>
+  <header class="main-header">
+    <h1>Rutina A – Tren Superior + HIIT + Core</h1>
+    <div class="cronometro-general">
+      <span id="tiempo-general">00:00:00</span>
+      <div class="botones-crono">
+        <button onclick="iniciarCronoGeneral()">Iniciar</button>
+        <button onclick="pausarCronoGeneral()">Pausar</button>
+        <button onclick="reiniciarCronoGeneral()">Reiniciar</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Calentamiento -->
+    <section class="tarjeta">
+      <h2>Calentamiento</h2>
+      <p>Descanso entre series: 1:30 minutos</p>
+      <ul>
+        <li>5 min en bici o elíptica a ritmo suave</li>
+        <li>Movilidad articular: círculos de hombros, torsiones de tronco, estiramientos dinámicos</li>
+      </ul>
+      <input type="checkbox"> Completado
+    </section>
+
+    <!-- PECHO -->
+    <section class="tarjeta">
+      <h2>Pecho</h2>
+      <p>Press pecho máquina sentado:</p>
+      <ul>
+        <li>12 reps a <input type="text" value="40"> kg</li>
+        <li>12 reps a <input type="text" value="45"> kg</li>
+        <li>12 reps a <input type="text" value="50"> kg</li>
+      </ul>
+      <p>Aperturas pecho máquina:</p>
+      <ul>
+        <li>12 reps a <input type="text" value="40"> kg</li>
+        <li>12 reps a <input type="text" value="40"> kg</li>
+        <li>12 reps a <input type="text" value="40"> kg</li>
+      </ul>
+      <input type="checkbox"> Completado
+    </section>
+
+    <!-- ESPALDA -->
+    <section class="tarjeta">
+      <h2>Espalda</h2>
+      <p>Jalón al pecho máquina:</p>
+      <ul>
+        <li>12 reps a <input type="text" value="35"> kg</li>
+        <li>12 reps a <input type="text" value="45"> kg</li>
+        <li>12 reps a <input type="text" value="45"> kg</li>
+      </ul>
+      <p>Remo en polea:</p>
+      <ul>
+        <li>12 reps a <input type="text" value="35"> kg</li>
+        <li>12 reps a <input type="text" value="35"> kg</li>
+        <li>12 reps a <input type="text" value="35"> kg</li>
+      </ul>
+      <input type="checkbox"> Completado
+    </section>
+
+    <!-- HOMBRO -->
+    <section class="tarjeta">
+      <h2>Hombro</h2>
+      <p>Elevación en máquina:</p>
+      <ul>
+        <li>12 reps a <input type="text" value="25"> kg</li>
+        <li>12 reps a <input type="text" value="30"> kg</li>
+        <li>10 reps a <input type="text" value="35"> kg</li>
+      </ul>
+      <input type="checkbox"> Completado
+    </section>
+
+    <!-- BRAZOS -->
+    <section class="tarjeta">
+      <h2>Brazos</h2>
+      <p>Fondos asistidos por máquina:</p>
+      <ul>
+        <li>12 reps con ayuda de <input type="text" value="40"> kg</li>
+        <li>12 reps con ayuda de <input type="text" value="35"> kg</li>
+        <li>12 reps con ayuda de <input type="text" value="30"> kg</li>
+      </ul>
+      <p>Bíceps en polea:</p>
+      <ul>
+        <li>12 reps a <input type="text" value="35"> kg</li>
+        <li>12 reps a <input type="text" value="35"> kg</li>
+        <li>12 reps a <input type="text" value="35"> kg</li>
+      </ul>
+      <input type="checkbox"> Completado
+    </section>
+
+    <!-- CARDIO -->
+    <section class="tarjeta">
+      <h2>Cardio HIIT</h2>
+      <div class="hiit-crono">
+        <span id="hiit-timer">00:00</span>
+        <div class="botones-crono">
+          <button onclick="iniciarHIIT()">Iniciar</button>
+          <button onclick="pausarHIIT()">Pausar</button>
+          <button onclick="reiniciarHIIT()">Reiniciar</button>
+        </div>
+      </div>
+      <p>5 min trote (7-8 km/h)</p>
+      <ul>
+        <li>1 min a 12 km/h</li>
+        <li>1 min a 6 km/h</li>
+        <li>1 min a 12 km/h</li>
+        <li>1 min a 6 km/h</li>
+        <li>1 min a 13 km/h</li>
+        <li>1 min a 6 km/h</li>
+        <li>1 min a 13 km/h</li>
+        <li>1 min a 6 km/h</li>
+        <li>1 min a 14 km/h</li>
+        <li>1 min a 6 km/h</li>
+        <li>1 min a 14 km/h</li>
+        <li>1 min a 6 km/h</li>
+        <li>1 min a 15 km/h</li>
+        <li>1 min a 6 km/h</li>
+        <li>1 min a 15 km/h</li>
+        <li>1 min a 6 km/h</li>
+      </ul>
+      <p>5 min a 5 km/h (recuperación)</p>
+      <input type="checkbox"> Completado
+    </section>
+
+    <!-- CORE -->
+    <section class="tarjeta">
+      <h2>Core (3 rondas)</h2>
+      <ul>
+        <li>Crunch ABS clásico: 30 reps</li>
+        <li>Elevaciones de piernas: 10 reps</li>
+        <li>Plancha frontal: 10"</li>
+        <li>Planchas laterales: 10" x2</li>
+      </ul>
+      <input type="checkbox"> Completado
+    </section>
+  </main>
+
+  <script src="../js/rutina-a.js"></script>
+</body>
+
+</html>
