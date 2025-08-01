@@ -64,7 +64,13 @@ function formatearMinSeg(segundos) {
 window.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".tarjeta input[type='checkbox']").forEach(checkbox => {
     checkbox.addEventListener("change", () => {
-      checkbox.closest(".tarjeta").classList.toggle("completada", checkbox.checked);
+      const tarjeta = checkbox.closest(".tarjeta");
+      tarjeta.classList.toggle("completada", checkbox.checked);
+
+      // Si es el checkbox de la tarjeta HIIT y se marca, parar el cronómetro HIIT
+      if (tarjeta.querySelector("#hiit-timer") && checkbox.checked) {
+        pausarHIIT();
+      }
     });
   });
 });
