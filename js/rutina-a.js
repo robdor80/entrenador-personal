@@ -7,13 +7,15 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/f
 
 let tiempoGeneral = 0;
 let intervaloGeneral = null;
+let tiempoHIIT = 0;
+let intervaloHIIT = null;
 let usuario = null;
 
 onAuthStateChanged(auth, (user) => {
   if (user) usuario = user;
 });
 
-window.iniciarCronoGeneral = function () {
+function iniciarCronoGeneral() {
   if (intervaloGeneral) return;
   intervaloGeneral = setInterval(() => {
     tiempoGeneral++;
@@ -21,21 +23,18 @@ window.iniciarCronoGeneral = function () {
   }, 1000);
 }
 
-window.pausarCronoGeneral = function () {
+function pausarCronoGeneral() {
   clearInterval(intervaloGeneral);
   intervaloGeneral = null;
 }
 
-window.reiniciarCronoGeneral = function () {
-  window.pausarCronoGeneral();
+function reiniciarCronoGeneral() {
+  pausarCronoGeneral();
   tiempoGeneral = 0;
   document.getElementById("tiempo-general").textContent = "00:00:00";
 }
 
-let tiempoHIIT = 0;
-let intervaloHIIT = null;
-
-window.iniciarHIIT = function () {
+function iniciarHIIT() {
   if (intervaloHIIT) return;
   intervaloHIIT = setInterval(() => {
     tiempoHIIT++;
@@ -43,13 +42,13 @@ window.iniciarHIIT = function () {
   }, 1000);
 }
 
-window.pausarHIIT = function () {
+function pausarHIIT() {
   clearInterval(intervaloHIIT);
   intervaloHIIT = null;
 }
 
-window.reiniciarHIIT = function () {
-  window.pausarHIIT();
+function reiniciarHIIT() {
+  pausarHIIT();
   tiempoHIIT = 0;
   document.getElementById("hiit-timer").textContent = "00:00";
 }
@@ -67,20 +66,31 @@ function formatearMinSeg(segundos) {
   return `${m}:${s}`;
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
+  // Asignar eventos a botones del cronómetro general
+  document.querySelector("button[onclick='iniciarCronoGeneral()']")?.addEventListener("click", iniciarCronoGeneral);
+  document.querySelector("button[onclick='pausarCronoGeneral()']")?.addEventListener("click", pausarCronoGeneral);
+  document.querySelector("button[onclick='reiniciarCronoGeneral()']")?.addEventListener("click", reiniciarCronoGeneral);
+
+  // Asignar eventos a botones del HIIT
+  document.querySelector("button[onclick='iniciarHIIT()']")?.addEventListener("click", iniciarHIIT);
+  document.querySelector("button[onclick='pausarHIIT()']")?.addEventListener("click", pausarHIIT);
+  document.querySelector("button[onclick='reiniciarHIIT()']")?.addEventListener("click", reiniciarHIIT);
+
+  // Eventos para los checks
   document.querySelectorAll(".tarjeta input[type='checkbox']").forEach(checkbox => {
     checkbox.addEventListener("change", () => {
       const tarjeta = checkbox.closest(".tarjeta");
       tarjeta.classList.toggle("completada", checkbox.checked);
 
       if (tarjeta.querySelector("#hiit-timer") && checkbox.checked) {
-        window.pausarHIIT();
+        pausarHIIT();
       }
 
       const totalChecks = document.querySelectorAll(".tarjeta input[type='checkbox']").length;
       const checksMarcados = document.querySelectorAll(".tarjeta input[type='checkbox']:checked").length;
       if (totalChecks > 0 && totalChecks === checksMarcados) {
-        window.pausarCronoGeneral();
+        pausarCronoGeneral();
         guardarRutinaEnHistorial();
       }
     });
