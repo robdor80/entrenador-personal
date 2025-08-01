@@ -13,7 +13,7 @@ onAuthStateChanged(auth, (user) => {
   if (user) usuario = user;
 });
 
-function iniciarCronoGeneral() {
+window.iniciarCronoGeneral = function () {
   if (intervaloGeneral) return;
   intervaloGeneral = setInterval(() => {
     tiempoGeneral++;
@@ -21,13 +21,13 @@ function iniciarCronoGeneral() {
   }, 1000);
 }
 
-function pausarCronoGeneral() {
+window.pausarCronoGeneral = function () {
   clearInterval(intervaloGeneral);
   intervaloGeneral = null;
 }
 
-function reiniciarCronoGeneral() {
-  pausarCronoGeneral();
+window.reiniciarCronoGeneral = function () {
+  window.pausarCronoGeneral();
   tiempoGeneral = 0;
   document.getElementById("tiempo-general").textContent = "00:00:00";
 }
@@ -35,7 +35,7 @@ function reiniciarCronoGeneral() {
 let tiempoHIIT = 0;
 let intervaloHIIT = null;
 
-function iniciarHIIT() {
+window.iniciarHIIT = function () {
   if (intervaloHIIT) return;
   intervaloHIIT = setInterval(() => {
     tiempoHIIT++;
@@ -43,13 +43,13 @@ function iniciarHIIT() {
   }, 1000);
 }
 
-function pausarHIIT() {
+window.pausarHIIT = function () {
   clearInterval(intervaloHIIT);
   intervaloHIIT = null;
 }
 
-function reiniciarHIIT() {
-  pausarHIIT();
+window.reiniciarHIIT = function () {
+  window.pausarHIIT();
   tiempoHIIT = 0;
   document.getElementById("hiit-timer").textContent = "00:00";
 }
@@ -74,13 +74,13 @@ window.addEventListener("DOMContentLoaded", () => {
       tarjeta.classList.toggle("completada", checkbox.checked);
 
       if (tarjeta.querySelector("#hiit-timer") && checkbox.checked) {
-        pausarHIIT();
+        window.pausarHIIT();
       }
 
       const totalChecks = document.querySelectorAll(".tarjeta input[type='checkbox']").length;
       const checksMarcados = document.querySelectorAll(".tarjeta input[type='checkbox']:checked").length;
       if (totalChecks > 0 && totalChecks === checksMarcados) {
-        pausarCronoGeneral();
+        window.pausarCronoGeneral();
         guardarRutinaEnHistorial();
       }
     });
